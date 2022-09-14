@@ -4,6 +4,16 @@ const loadingElement = document.querySelector('#loading')
 
 const postsContainer = document.querySelector('#posts-container')
 
+const postPage = document.querySelector('#post')
+
+const postConatiner = document.querySelector('#post-container')
+
+const commnentsContainer = document.querySelector('#comments-container')   
+
+// Get id from URL
+const urlSearchParams = new URLSearchParams(window.location.search)
+const postId = urlSearchParams.get('id')
+
 // Get all posts
 async function getAllPosts(){
     const response = await fetch(url)
@@ -37,4 +47,9 @@ async function getAllPosts(){
     })
 }
 
-getAllPosts()
+if(!postId) {
+    getAllPosts()
+}else{
+    console.log(postId)
+}
+
